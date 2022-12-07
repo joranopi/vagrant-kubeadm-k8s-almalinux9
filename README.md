@@ -11,6 +11,10 @@ If you are preparing for Prometheus Certification, CKA, CKAD, CKS, or KCNA exam,
 ## Prerequisites
 
 1. Working Vagrant setup
+   * ```
+     sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
+     sudo apt install vagrant vagrant-libvirt libvirt-daemon-system
+     ```
 2. 16 G + RAM workstation as the VMs use 5 vCPUS and 4+ GB RAM
 
 ## Usage/Examples
@@ -18,8 +22,8 @@ If you are preparing for Prometheus Certification, CKA, CKAD, CKS, or KCNA exam,
 To provision the cluster, execute the following commands.
 
 ```shell
-git clone https://github.com/scriptcamp/vagrant-kubeadm-kubernetes.git
-cd vagrant-kubeadm-kubernetes9
+git clone https://github.com/naimarshad/vagrant-kubeadm-k8s-almalinux9.git
+cd vagrant-kubeadm-k8s-almalinux9
 vagrant up master && vagrant up
 ```
 
