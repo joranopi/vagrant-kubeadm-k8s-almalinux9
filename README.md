@@ -4,16 +4,17 @@
 
 Current k8s version for CKA, CKAD and CKS exam: 1.24
 
-🚀 CKA, CKAD, CKS or KCNA Coupon Codes
+CKA, CKAD, CKS or KCNA Coupon Codes
 
-If you are preparing for Prometheus Certification, CKA, CKAD, CKS, or KCNA exam, **save 50%** today using code **CYBER22CC** at https://kube.promo/latest. It is a limited-time offer. Or Check out [Linux Foundation coupon](https://scriptcrunch.com/linux-foundation-coupon/) page for the latest voucher codes.
+## I used the debian sid to execute the below instructions
+
+If you are preparing for Prometheus Certification, CKA, CKAD, CKS, or KCNA exam, **save 50%** today using code **CYBER22CC** at https://kube.promo/latest. It is a limited-time offer. 
 
 ## Prerequisites
 
 1. Working Vagrant setup
    * ```
-     sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
-     sudo apt install vagrant vagrant-libvirt libvirt-daemon-system
+     sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin vagrant vagrant-libvirt libvirt-daemon-system
      ```
 2. 16 G + RAM workstation as the VMs use 5 vCPUS and 4+ GB RAM
 
@@ -57,19 +58,19 @@ cd configs
 cat token
 ```
 
-## To shutdown the cluster,
+## To shutdown the cluster
 
 ```shell
 vagrant halt
 ```
 
-## To restart the cluster,
+## To restart the cluster
 
 ```shell
 vagrant up
 ```
 
-## To destroy the cluster,
+## To destroy the cluster
 
 ```shell
 vagrant destroy -f
