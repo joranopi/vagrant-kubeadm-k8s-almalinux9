@@ -31,7 +31,7 @@ vagrant up master && vagrant up
 ## Set Kubeconfig file variable
 
 ```shell
-cd vagrant-kubeadm-kubernetes
+cd vagrant-kubeadm-k8s-almalinux9
 cd configs
 export KUBECONFIG=$(pwd)/config
 ```
@@ -53,7 +53,7 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 Vagrant up will create the admin user token and saves in the configs directory.
 
 ```shell
-cd vagrant-kubeadm-kubernetes
+cd vagrant-kubeadm-k8s-almalinux9
 cd configs
 cat token
 ```
