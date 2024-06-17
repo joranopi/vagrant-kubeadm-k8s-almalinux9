@@ -6,7 +6,8 @@ set -euxo pipefail
 
 # Variable Declaration
 
-KUBERNETES_VERSION="1.24.8-0"
+KUBERNETES_VERSION="1.29"
+#KUBERNETES_VERSION="1.24.8-0"
 
 # disable swap
 sudo swapoff -a
@@ -50,16 +51,36 @@ sudo systemctl enable crio --now
 
 echo "CRI runtime installed susccessfully"
 
+
+# NEW Kubernetes Repo from K8s.io
+# =================================
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
 enabled=1
 gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
 EOF
 
-sudo dnf install -y jq kubelet-"$KUBERNETES_VERSION" kubectl-"$KUBERNETES_VERSION" kubeadm-"$KUBERNETES_VERSION"
+# OLD Kubernetes Repo from Google
+# ===============================
+#cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+#[kubernetes]
+#name=Kubernetes
+#baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+#enabled=1
+#gpgcheck=1
+#gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+#EOF
+
+sudo dnf install -y jq kubelet kubectl kubeadm
+
+sudo dnf install -y bash-completion
+kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
+sudo chmod a+r /etc/bash_completion.d/kubectl
+
+#sudo dnf install -y jq kubelet-"$KUBERNETES_VERSION" kubectl-"$KUBERNETES_VERSION" kubeadm-"$KUBERNETES_VERSION"
 
 local_ip="$(ip --json a s | jq -r '.[] | if .ifname == "ens6" then .addr_info[] | if .family == "inet" then .local else empty end else empty end')"
 cat > /etc/default/kubelet << EOF

@@ -1,0 +1,14 @@
+#!/bin/bash
+SNAP_TITLE=001_Initial_Setup
+
+echo "========================================================"
+for i in vagrant-kubeadm-k8s-almalinux9_{master,node0{1..2}}
+do echo  ""
+   echo $i 
+   echo --------------- 
+   virsh snapshot-create-as --name $SNAP_TITLE --domain $i
+done
+
+echo " "
+echo "========================================================="
+echo Done.  All snapshots created.
