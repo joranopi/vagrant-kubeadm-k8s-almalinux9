@@ -1,0 +1,4 @@
+# ignore the .vagrant directory and files located within
+.vagrant/
+*.iso
+*.swp
