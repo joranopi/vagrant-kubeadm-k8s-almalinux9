@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "========================================================"
-for i in vagrant-kubeadm-k8s-almalinux9_{master,node0{1..2}}
+for i in kubernetes_lab_{master,node0{1..2}}
 do echo  ""
    echo $i
    echo ---------------
